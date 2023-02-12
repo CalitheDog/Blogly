@@ -1,0 +1,41 @@
+{% extends 'base.html' %}{% block title %}Edit User{% endblock %} {% block
+    content %}
+    <h1 id="edit-user-heading">Edit User Info</h1>
+    <form action="/users/{{user.id}}/edit" method="POST" class="info-form">
+      <label for="first_name">First Name</label>
+      <input
+        type="text"
+        name="first_name"
+        placeholder="Enter a first name"
+        value="{{user.first_name}}"
+        required
+      />
+      <label for="last_name">Last Name</label>
+      {% if user.last_name %}
+      <input
+        type="text"
+        name="last_name"
+        placeholder="Enter a last name"
+        value="{{user.last_name}}"
+      />
+      {% else %}
+      <input type="text" name="last_name" placeholder="Enter a last name" />
+      {% endif %}
+      <label for="image_url">Image URL</label>
+      <input
+        type="text"
+        name="image_url"
+        placeholder="Provide an image of this user"
+        value="{{user.image_url}}"
+      />
+      <button id="save">Save</button>
+      <button
+        id="cancel"
+        formaction="/users/{{user.id}}"
+        formmethod="GET"
+        formnovalidate
+      >
+        Cancel
+      </button>
+    </form>
+    {% endblock %}

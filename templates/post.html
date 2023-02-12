@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% block title %}{{post.title}}{% endblock %} {% block
+    content %}
+    <div id="post">
+      <h1>{{post.title}}</h1>
+      <p>{{post.content}}</p>
+      <div>By {{post.user.get_full_name()}} on {{post.convert_created_at()}}</div>
+      <span>
+        <a href="/posts/{{post.id}}/edit"><button id="edit">Edit</button></a>
+        <form action="/posts/{{post.id}}/delete" method="POST">
+          <button id="delete">Delete</button>
+        </form>
+      </span>
+      <span>
+        <a href="/users/{{post.user.id}}"><button id="go-back">Go Back</button></a>
+      </span>
+    </div>
+    {% endblock %}
